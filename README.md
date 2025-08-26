@@ -1,6 +1,110 @@
 # RAG-Investment-Report-Gen
 
 
+## Key Components \& Architecture
+
+### 1. **Document Processing System** (`DocumentProcessor`)
+
+- Extracts text from PDF and PowerPoint files using `pdfplumber` and `python-pptx`
+- Implements intelligent text chunking with overlap for better context preservation
+- Cleans and normalizes extracted text for analysis
+
+
+### 2. **Financial Data Integration** (`FinancialDataFetcher`)
+
+- Uses **Yahoo Finance API** (`yfinance`) to fetch:
+    - Company information (sector, industry, market cap)
+    - Financial metrics (P/E ratios, profit margins, debt ratios)
+    - Stock performance data (returns, volatility, 52-week ranges)
+
+
+### 3. **News Intelligence** (`NewsDataFetcher`)
+
+- Integrates with **News API** to gather recent company news
+- Implements deduplication and relevance filtering
+- Formats news data for context in AI analysis
+
+
+### 4. **RAG System** (`RAGSystem`)
+
+- Uses **Sentence Transformers** for text embedding generation
+- Implements **FAISS** vector database for fast similarity search
+- Retrieves relevant document chunks based on query similarity
+- Includes comprehensive debugging and logging
+
+
+### 5. **AI Analysis Engine** (`MemoGenerator`)
+
+- Uses **Google's Gemini 2.0 Flash** model for content generation
+- Generates four key memo sections:
+    - Executive Summary
+    - Investment Risks
+    - Growth Drivers \& Opportunities
+    - Valuation Analysis
+
+
+### 6. **Multi-Modal Application** (`InvestmentMemoApp`)
+
+- **Three Analysis Modes:**
+
+1. **Listed Companies**: Ticker symbol only
+2. **Private Companies**: Document upload only
+3. **In-depth Analysis**: Ticker + documents combined
+
+
+## Technical Architecture Highlights
+
+### **Smart Context Assembly**
+
+- Dynamically queries the RAG system for different memo sections
+- Adapts prompts based on available data sources
+- Handles missing data gracefully
+
+
+### **Adaptive Content Generation**
+
+- Different prompt templates for public vs. private companies
+- Contextual analysis based on available information
+- Professional formatting with proper disclaimers
+
+
+### **User Interface Design**
+
+- **Jupyter widgets** for interactive file upload
+- Clear instructions for different use cases
+- Real-time progress feedback and error handling
+
+
+## Key Strengths
+
+1. **Flexibility**: Handles both public and private company analysis
+2. **Data Integration**: Combines financial data, documents, and news
+3. **Professional Output**: Generates investment-grade memos
+4. **Error Handling**: Robust validation and fallback mechanisms
+5. **Scalability**: Modular design allows easy extension
+
+## Dependencies \& APIs
+
+- **Core AI**: Google Gemini, Sentence Transformers, FAISS
+- **Financial Data**: Yahoo Finance API
+- **News**: News API
+- **Document Processing**: pdfplumber, python-pptx
+- **Interface**: Jupyter widgets, IPython display
+
+
+## Use Cases
+
+This tool is particularly valuable for:
+
+- **Investment analysts** conducting due diligence
+- **Private equity firms** evaluating portfolio companies
+- **Venture capitalists** analyzing startups
+- **Corporate development** teams assessing acquisition targets
+- **Students and researchers** learning investment analysis
+
+----------------------------------------------
+
+
 
 # Comparison of RAG Model-Generated Investment Memos
 
